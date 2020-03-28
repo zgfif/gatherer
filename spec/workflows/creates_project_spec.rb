@@ -1,68 +1,68 @@
 require 'rails_helper'
 
 RSpec.describe CreatesProject do
-  it 'creates a project with a given name' do
-    creator = CreatesProject.new(name: 'Wayne')
-    creator.build
-    expect(creator.project.name).to eq('Wayne')
-  end
-end
+  let(:creator) { CreatesProject.new(name: 'Project X', task_string: task_string) }
 
-describe 'string parsing' do
-  it 'handles an empty string' do
-    creator = CreatesProject.new(name: 'Project X', task_string: '')
-    tasks = creator.convert_string_to_tasks
-    expect(tasks).to be_empty
+  describe 'initialization' do
+    let(:task_string) { '' }
+
+    it 'creates a project with a given name' do
+      creator.build
+      expect(creator.project.name).to eq('Project X')
+    end
   end
 
-  it 'handles a single string' do
-    creator = CreatesProject.new(name: 'Project X', task_string: 'First Task')
-    tasks = creator.convert_string_to_tasks
-    expect(tasks.size).to eq(1)
-    expect(tasks.first).to have_attributes(title: 'First Task', size: 1)
-  end
+  describe 'task string parsing' do
+    let(:tasks) { creator.convert_string_to_tasks }
 
-  it 'handles a single string with size' do
-    creator = CreatesProject.new(name: 'Project X', task_string: 'First Task:3')
-    tasks = creator.convert_string_to_tasks
-    expect(tasks.size).to eq(1)
-    expect(tasks.first).to have_attributes(title: 'First Task', size: 3)
-  end
+    describe 'handles an empty string' do
+      let(:task_string) { '' }
+      specify { expect(tasks).to be_empty }
+    end
 
-  it 'handles a single string with zero size' do
-    creator = CreatesProject.new(name: 'Project X', task_string: 'First Task:0')
-    tasks = creator.convert_string_to_tasks
-    expect(tasks.size).to eq(1)
-    expect(tasks.first).to have_attributes(title: 'First Task', size: 1)
-  end
+    describe 'handles a single string' do
+      let(:task_string) { 'First Task' }
+      specify { expect(tasks.size).to eq(1) }
+      specify {expect(tasks.first).to have_attributes(title: 'First Task', size: 1) }
+    end
 
-  it 'handles a single string with malformed size' do
-    creator = CreatesProject.new(name: 'Project X', task_string: 'First Task:')
-    tasks = creator.convert_string_to_tasks
-    expect(tasks.size).to eq(1)
-    expect(tasks.first).to have_attributes(title: 'First Task', size: 1)
-  end
+    describe 'handles a single string with size' do
+      let(:task_string) { 'First Task:3' }
+      specify { expect(tasks.size).to eq(1) }
+      specify { expect(tasks.first).to have_attributes(title: 'First Task', size: 3) }
+    end
 
-  it 'handles a single string string with negative size' do
-    creator = CreatesProject.new(name: 'Project X', task_string: 'First Task:-1')
-    tasks = creator.convert_string_to_tasks
-    expect(tasks.size).to eq(1)
-    expect(tasks.first).to have_attributes(title: 'First Task', size: 1)
-  end
+    describe 'handles a single string with zero size' do
+      let(:task_string) { 'First Task:0' }
+      specify { expect(tasks.size).to eq(1) }
+      specify { expect(tasks.first).to have_attributes(title: 'First Task', size: 1) }
+    end
 
-  it 'handles multiple tasks' do
-    creator = CreatesProject.new(name: 'Project X', task_string: "First Task:1\nSecond Task:4")
-    tasks = creator.convert_string_to_tasks
-    expect(tasks.size).to eq(2)
-    expect(tasks).to match(
-      [an_object_having_attributes(title: 'First Task', size: 1),
-        an_object_having_attributes(title: 'Second Task', size: 4)])
-  end
+    describe 'handles a single string with malformed size' do
+      let(:task_string) { 'First Task:' }
+      specify { expect(tasks.size).to eq(1) }
+      specify { expect(tasks.first).to have_attributes(title: 'First Task', size: 1) }
+    end
 
-  it 'attaches tasks to the project' do
-    creator = CreatesProject.new(name: 'Project X', task_string: "First Task:1\nSecond Task:4")
-    creator.create
-    expect(creator.project.tasks.size).to eq(2)
-    expect(creator.project).not_to be_a_new_record
+    describe 'handles a single string string with negative size' do
+      let(:task_string) { 'First Task:-1' }
+      specify { expect(tasks.size).to eq(1) }
+      specify { expect(tasks.first).to have_attributes(title: 'First Task', size: 1) }
+    end
+
+    describe 'handles multiple tasks' do
+      let(:task_string) { "First Task:1\nSecond Task:4" }
+      specify { expect(tasks.size).to eq(2) }
+      specify { expect(tasks).to match(
+        [an_object_having_attributes(title: 'First Task', size: 1),
+        an_object_having_attributes(title: 'Second Task', size: 4)]) }
+    end
+
+    describe 'attaches tasks to the project' do
+      let(:task_string) { "First Task:1\nSecond Task:4" }
+      before(:example) { creator.create }
+      specify { expect(creator.project.tasks.size).to eq(2) }
+      specify { expect(creator.project).not_to be_a_new_record }
+    end
   end
 end
