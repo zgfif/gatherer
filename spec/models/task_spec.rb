@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Task do
+  it_should_behave_like "sizeable"
+
   let(:task) { Task.new }
 
   it 'does not have any task as complete' do
@@ -31,5 +33,14 @@ describe "velocity" do
     task.mark_completed(6.months.ago)
     expect(task).not_to be_a_part_of_velocity
     expect(task.points_toward_velocity).to eq(0)
+  end
+
+  it "stubs with multiple return values" do
+    task = Task.new
+    allow(task).to receive(:size).and_return(1, 2)
+    assert_equal(1, task.size)
+    assert_equal(2, task.size)
+    assert_equal(2, task.size)
+    assert_equal(2, task.size)
   end
 end

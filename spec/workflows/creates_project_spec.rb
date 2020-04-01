@@ -58,11 +58,35 @@ RSpec.describe CreatesProject do
         an_object_having_attributes(title: 'Second Task', size: 4)]) }
     end
 
+    describe "doesn't allow creation of a task without a size" do
+      let(:task_string) { 'size:no_size' }
+      before(:example) { creator.create }
+      specify { expect(creator.project.tasks.map(&:title)).to eq(["size"]) }
+    end
+
     describe 'attaches tasks to the project' do
       let(:task_string) { "First Task:1\nSecond Task:4" }
       before(:example) { creator.create }
       specify { expect(creator.project.tasks.size).to eq(2) }
       specify { expect(creator.project).not_to be_a_new_record }
     end
+  end
+end
+
+describe "failure cases" do
+  it "fails when trying to save a project with no name" do
+    creator = CreatesProject.new(name: "", task_string: "")
+    creator.create
+   expect(creator).not_to be_a_success
+  end
+end
+
+describe "mocking a failure" do
+  it "fails when we say it fails" do
+    project = instance_spy(Project, save: false)
+    allow(Project).to receive(:new).and_return(project)
+    creator = CreatesProject.new(name: "Name", task_string: "Task")
+    creator.create
+    expect(creator).not_to be_a_success
   end
 end
