@@ -13,13 +13,21 @@ class CreatesProject
 
   def build
     self.project = Project.new(name: name)
-    project.tasks = convert_string_to_tasks
   end
 
   def create
-     build
-     result = project.save
-     @success = result
+    build
+    result = Project.transaction do
+      return false unless project.save
+
+      convert_string_to_tasks.each do |task|
+        task.project = project
+        task.project_order = project.next_task_order
+        return false unless task.save
+      end
+    end
+
+    @success = result
   end
 
   def convert_string_to_tasks
