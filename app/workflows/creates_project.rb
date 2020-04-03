@@ -17,17 +17,28 @@ class CreatesProject
 
   def create
     build
-    result = Project.transaction do
-      return false unless project.save
+    result = project_tasks_transaction
+    @success = result
+  end
 
-      convert_string_to_tasks.each do |task|
-        task.project = project
-        task.project_order = project.next_task_order
-        return false unless task.save
-      end
+  def project_tasks_transaction
+    Project.transaction do
+      return false unless project.save
+      assign_tasks!
     end
 
-    @success = result
+    rescue ActiveRecord::RecordInvalid
+      false
+  end
+
+  def assign_tasks!
+    Task.transaction do
+      convert_string_to_tasks.map do |task|
+        task.project = project
+        task.project_order = project.next_task_order
+        task.save!
+      end
+    end
   end
 
   def convert_string_to_tasks

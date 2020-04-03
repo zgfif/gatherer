@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe Task do
   it_should_behave_like "sizeable"
-
-  let(:task) { Task.new }
+  let!(:project) { build_stubbed(:project) }
+  let!(:task) { build_stubbed(:task, project: project) }
 
   it 'does not have any task as complete' do
     expect(task).not_to be_complete
@@ -47,9 +47,9 @@ end
 
 describe "order", aggregate_failures: true do
   let(:project) { create(:project, name: "Project") }
-  let!(:first) { project.tasks.create!(project_order: 1) }
-  let!(:second) { project.tasks.create!(project_order: 2) }
-  let!(:third) { project.tasks.create!(project_order: 3) }
+  let!(:first) { project.tasks.create!(title: 'Month', project_order: 1) }
+  let!(:second) { project.tasks.create!(title: 'maxim', project_order: 2) }
+  let!(:third) { project.tasks.create!(title: 'maxim', project_order: 3) }
 
   it "can determine that a task is first or last" do
     expect(first).to be_first_in_project
