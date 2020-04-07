@@ -6,7 +6,6 @@ Feature: Add a task
        |          title|size|project_order|
        |Hunt the aliens|   1|            1|
        |   Write a book|   1|            2|
-
   Scenario: I can add and change the priority of a new task
     When I visit the project page
     And I complete the new task form
