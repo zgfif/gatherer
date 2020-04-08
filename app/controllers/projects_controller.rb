@@ -5,6 +5,10 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+    respond_to do |format|
+format.html {}
+format.js { render json: @project.as_json(root: true, include: :tasks) }
+end
   end
 
   def new
