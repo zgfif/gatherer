@@ -32,7 +32,7 @@ class Project < ApplicationRecord
   end
 
   def on_schedule?
-    return false if projected_days_remaining.nan?
+    return false if projected_days_remaining.nan? || projected_days_remaining.infinite?
     (Time.zone.today + projected_days_remaining) <= due_date
   end
 

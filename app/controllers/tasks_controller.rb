@@ -11,6 +11,18 @@ class TasksController < ApplicationController
     redirect_to(@project)
   end
 
+  def update
+    @task = Task.find(params[:id])
+    completed = params[:task][:completed] == 'true' && !@task.complete?
+    params[:task][:completed_at] = Time.now if completed
+    if @task.update_attributes(task_params)
+      TaskMailer.task_completed_email(@task).deliver if completed
+      redirect_to @task, notice: "project was successfully updated"
+    else
+      render action :edit
+    end
+  end
+
   def up
     @task.move_up
     redirect_to(@task.project)
@@ -28,6 +40,6 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:title, :size, :project_id)
+    params.require(:task).permit(:title, :size, :project_id, :completed_at)
   end
 end
