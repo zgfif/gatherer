@@ -8,6 +8,9 @@
       <%= javascript_pack_tag 'projects' %>
   </head>
   <body>
-     <%= yield %>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <%= sign_in_out %>
+    <%= yield %>
   </body>
 </html>

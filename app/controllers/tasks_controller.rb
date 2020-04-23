@@ -3,6 +3,10 @@ class TasksController < ApplicationController
 
   def create
     @project = Project.find(params[:task][:project_id])
+    unless current_user.can_view?(@project)
+      redirect_to new_user_session_path
+      return
+    end
 
     @task = Task.new(params[:task].permit(:title, :size, :project_id))
     @project.tasks.create(

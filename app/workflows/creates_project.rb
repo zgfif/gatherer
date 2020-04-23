@@ -1,10 +1,11 @@
 class CreatesProject
-  attr_accessor :name, :project, :task_string
+  attr_accessor :name, :project, :task_string, :users
 
-  def initialize(name: '', task_string: '')
+  def initialize(name: '', task_string: '', users:[])
     @name = name
     @task_string = task_string || ''
     @success = false
+    @users = users
   end
 
   def success?
@@ -12,7 +13,7 @@ class CreatesProject
   end
 
   def build
-    self.project = Project.new(name: name)
+    self.project = Project.new(name: name, users: users)
   end
 
   def create

@@ -11,7 +11,15 @@ RSpec.describe "adding a new task" do
     :task, project: project, title: "Take Notes", size: 1,
            project_order: 3) }
 
+  let(:user) { create(:user) }
+
+  before(:example) do
+    login_as(user)
+    Role.create(project: project, user: user)
+  end
+
   it "can re-order a task", :js do
+
     visit(project_path(project))
 
     within("#task_3") do

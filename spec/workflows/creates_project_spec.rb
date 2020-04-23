@@ -89,4 +89,14 @@ describe "mocking a failure" do
     creator.create
     expect(creator).not_to be_a_success
   end
+
+end
+
+describe 'project users' do
+  it 'adds users to a project' do
+    user = create(:user)
+    creator = CreatesProject.new(name: 'Project Runway', users: [user])
+    creator.build
+    expect(creator.project.users).to eq([user])
+  end
 end

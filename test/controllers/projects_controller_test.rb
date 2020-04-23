@@ -2,7 +2,7 @@ require 'test_helper'
 
 class ProjectsControllerTest < ActionController::TestCase
   test 'routing' do
-    assert_routing('/projects', controller: 'projects', action: 'index')
+    assert_routing('/', controller: 'projects', action: 'index')
     assert_routing('/projects/new',controller: 'projects', action: 'new')
     assert_routing({ path: '/projects', method: 'post' }, controller: 'projects', action: 'create')
     assert_routing('/projects/1', controller: 'projects', action: 'show', id: '1')

@@ -1,7 +1,13 @@
 class Project < ApplicationRecord
   has_many :tasks, -> { order "project_order ASC" }, dependent: :destroy
+  has_many :roles, dependent: :destroy
+  has_many :users, through: :roles
 
   validates :name, presence: true
+
+  def self.all_public
+    where(public: true)
+  end
 
   def incomplete_tasks
     tasks.reject(&:complete?)
