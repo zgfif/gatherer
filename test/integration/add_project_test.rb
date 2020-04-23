@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class AddProjectTest < ActionDispatch::IntegrationTest
+
   test 'allows a user to create a project with tasks' do
     sign_in(FactoryBot.create(:user))
     post(projects_path, params: { project: { name: 'Project Runaway', tasks: "Choose Fabric:3\nMake It Work:5" } })
@@ -20,13 +21,14 @@ class AddProjectTest < ActionDispatch::IntegrationTest
     assert_select('.new_project')
   end
 
-  test 'it behaves correctly with a database failure' do
-    sign_in(FactoryBot.create(:user))
-    workflow = stub(success?: false, create: false, project: Project.new)
 
+  test 'it behaves correctly with a database failure' do
+    user = FactoryBot.create(:user)
+    sign_in(user)
+    workflow = stub(success?: false, create: false, project: Project.new)
     CreatesProject.stubs(:new).with(
       name: 'Project Runaway',
-      task_string: "Choose Fabric:3\nMake It Work:5").returns(workflow)
+      task_string: "Choose Fabric:3\nMake It Work:5", users: [user]).returns(workflow)
     post(projects_path, params: { project: { name: 'Project Runaway', tasks: "Choose Fabric:3\nMake It Work:5" } })
 
     assert_select('.new_project')
