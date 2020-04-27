@@ -2,6 +2,7 @@ class Task < ApplicationRecord
   include Sizeable
 
   belongs_to :project
+  belongs_to :user, required: false
 
   def complete?
    completed_at.present?

@@ -1,12 +1,14 @@
 Feature: Add a task
 
   Background:
+    Given a user
     Given a project named 'Gatherer On Rails 5.2'
     Given an associated tasks with attributes:
        |          title|size|project_order|
        |Hunt the aliens|   1|            1|
        |   Write a book|   1|            2|
   Scenario: I can add and change the priority of a new task
+    When the user sign in
     When I visit the project page
     And I complete the new task form
     Then I am back on the project page

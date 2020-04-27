@@ -27,3 +27,9 @@ module ActionDispatch
     include Devise::Test::IntegrationHelpers
   end
 end
+
+VCR.configure do |c|
+  c.cassette_library_dir = 'test/vcr'
+  c.hook_into :webmock
+  c.ignore_localhost = true
+end

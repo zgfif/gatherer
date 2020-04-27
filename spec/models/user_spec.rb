@@ -10,7 +10,6 @@ RSpec::Matchers.define :be_able_to_see do |projects|
   end
 end
 
-
 RSpec.describe User, type: :model do
   let(:project) { create(:project) }
   let(:user) { create(:user) }
