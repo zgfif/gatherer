@@ -44,8 +44,6 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
-    archive-zip (0.12.0)
-      io-like (~> 0.3.0)
     arel (9.0.0)
     backports (3.17.1)
     bcrypt (3.1.13)
@@ -67,9 +65,6 @@ GEM
       capybara (>= 1.0, < 4)
       launchy
     childprocess (3.0.0)
-    chromedriver-helper (2.1.1)
-      archive-zip (~> 0.10)
-      nokogiri (~> 1.8)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0)
@@ -116,10 +111,10 @@ GEM
     equalizer (0.0.11)
     erubi (1.9.0)
     execjs (2.7.0)
-    factory_bot (5.1.2)
+    factory_bot (5.2.0)
       activesupport (>= 4.2.0)
-    factory_bot_rails (5.1.1)
-      factory_bot (~> 5.1.0)
+    factory_bot_rails (5.2.0)
+      factory_bot (~> 5.2.0)
       railties (>= 4.2.0)
     ffi (1.12.2)
     ffi-compiler (1.0.1)
@@ -143,7 +138,6 @@ GEM
     http_parser.rb (0.6.0)
     i18n (1.8.2)
       concurrent-ruby (~> 1.0)
-    io-like (0.3.1)
     jbuilder (2.10.0)
       activesupport (>= 5.0.0)
     launchy (2.5.0)
@@ -298,6 +292,10 @@ GEM
       activemodel (>= 5.0)
       bindex (>= 0.4.0)
       railties (>= 5.0)
+    webdrivers (4.3.0)
+      nokogiri (~> 1.6)
+      rubyzip (>= 1.3.0)
+      selenium-webdriver (>= 3.0, < 4.0)
     webmock (3.8.3)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
@@ -321,7 +319,6 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15, < 4.0)
   capybara-screenshot
-  chromedriver-helper
   coffee-rails (~> 4.2)
   cucumber-rails
   database_cleaner
@@ -341,10 +338,10 @@ DEPENDENCIES
   sqlite3
   turbolinks (~> 5)
   twitter
-  tzinfo-data
   uglifier (>= 1.3.0)
   vcr
   web-console (>= 3.3.0)
+  webdrivers
   webmock
   webpacker
 

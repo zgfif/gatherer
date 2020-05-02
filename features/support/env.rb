@@ -58,3 +58,18 @@ end
 # See https://github.com/cucumber/cucumber-rails/blob/master/features/choose_javascript_database_strategy.feature
 Cucumber::Rails::Database.javascript_strategy = :truncation
 
+Capybara.default_driver = :selenium_chrome_headless
+
+DatabaseCleaner.strategy = :truncation
+
+Cucumber::Rails::Database.autorun_database_cleaner = false
+
+Before do
+  DatabaseCleaner.clean
+end
+
+include Warden::Test::Helpers
+
+After do
+   Warden.test_reset!
+ end

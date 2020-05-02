@@ -2,6 +2,7 @@ class User < ApplicationRecord
   has_many :roles, dependent: :destroy
   has_many :projects, through: :roles
   has_many :tasks, dependent: :nullify
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
