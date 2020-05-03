@@ -16,4 +16,9 @@ class User < ApplicationRecord
     return Project.all if admin
     Project.where(id: project_ids).or(Project.all_public)
   end
+
+  def avatar_url
+    adapter = AvatarAdapter.new(self)
+    adapter.image_url
+  end
 end

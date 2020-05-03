@@ -1,0 +1,68 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://chromedriver.storage.googleapis.com/LATEST_RELEASE_81.0.4044
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - chromedriver.storage.googleapis.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Guploader-Uploadid:
+      - AAANsUmPmyO0QuG-anst4dQHDd05fqLUhC1UYAFwKqRwwxWtzLWqwX7zI8odt73ZqucajY8kEhpn04CSuUlA03behQ
+      Expires:
+      - Sun, 03 May 2020 10:54:07 GMT
+      Date:
+      - Sun, 03 May 2020 09:54:07 GMT
+      Last-Modified:
+      - Tue, 17 Mar 2020 16:16:55 GMT
+      Etag:
+      - '"5b2d74232aaf7e3e284ba7f9d0ecf862"'
+      X-Goog-Generation:
+      - '1584461815944798'
+      X-Goog-Metageneration:
+      - '1'
+      X-Goog-Stored-Content-Encoding:
+      - identity
+      X-Goog-Stored-Content-Length:
+      - '12'
+      Content-Type:
+      - text/plain
+      Content-Language:
+      - en
+      X-Goog-Hash:
+      - crc32c=bUrUmw==
+      - md5=Wy10Iyqvfj4oS6f50Oz4Yg==
+      X-Goog-Storage-Class:
+      - STANDARD
+      Accept-Ranges:
+      - bytes
+      Content-Length:
+      - '12'
+      Server:
+      - UploadServer
+      Cache-Control:
+      - public, max-age=3600
+      Age:
+      - '169'
+      Alt-Svc:
+      - h3-Q050=":443"; ma=2592000,h3-Q049=":443"; ma=2592000,h3-Q048=":443"; ma=2592000,h3-Q046=":443";
+        ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443"; ma=2592000; v="46,43"
+    body:
+      encoding: UTF-8
+      string: 81.0.4044.69
+    http_version: null
+  recorded_at: Sun, 03 May 2020 09:56:56 GMT
+recorded_with: VCR 5.1.0
