@@ -2,7 +2,7 @@
   "name": "gatherer_52",
   "private": true,
   "scripts": {
-  "test": "NODE_ENV=test karma start"
+    "test": "NODE_ENV=test karma start"
   },
   "dependencies": {
     "@rails/webpacker": "5.0.1",
