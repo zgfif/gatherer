@@ -2,50 +2,59 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.twitter.com/1.1/users/show.json?screen_name=noelrap
+    uri: https://graph.facebook.com/me/picture?access_token=EAAIjMGUG3oUBAH91suFIDzzi7BLCwmKZANfnIi0QQ9OIm9UMJSwK64ZCxJBPbgICWCNZCVCfreUhN67Sl6hxSj1nnjZAT14YvrW88eUKFrexMMSQG6V1LQ3hycPEcFvtB08uFCUj3kUOs7p24tIM9vAJn4dhB15UZAKW7S1hRLgZDZD&redirect=false&type=large
     body:
-      encoding: UTF-8
+      encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - TwitterRubyGem/7.0.0
-      Authorization:
-      - OAuth oauth_consumer_key="YOUR_CONSUMER_KEY", oauth_nonce="329db37c7b3f563acbf6eea6d56efe18",
-        oauth_signature="OIWM%2BuqRamtxP0LoT%2FIUiuB%2BEAU%3D", oauth_signature_method="HMAC-SHA1",
-        oauth_timestamp="1588521771", oauth_token="YOUR_ACCESS_TOKEN", oauth_version="1.0"
-      Connection:
-      - close
-      Host:
-      - api.twitter.com
+      - Faraday v1.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
   response:
     status:
-      code: 401
-      message: Unauthorized
+      code: 200
+      message: OK
     headers:
-      Connection:
-      - close
-      Content-Length:
-      - '62'
+      Etag:
+      - '"7a6ead3726006e2a915889dca3cdda17eb119a0d"'
+      X-App-Usage:
+      - '{"call_count":4,"total_cputime":0,"total_time":0}'
       Content-Type:
-      - application/json; charset=utf-8
-      Date:
-      - Sun, 03 May 2020 16:02:52 GMT
-      Server:
-      - tsa_o
-      Set-Cookie:
-      - guest_id=v1%3A158852177197901474; Max-Age=63072000; Expires=Tue, 3 May 2022
-        16:02:51 GMT; Path=/; Domain=.twitter.com; Secure; SameSite=None
-      - personalization_id="v1_tMg9utCeE6xnm30PCxw3Rg=="; Max-Age=63072000; Expires=Tue,
-        3 May 2022 16:02:51 GMT; Path=/; Domain=.twitter.com; Secure; SameSite=None
+      - application/json; charset=UTF-8
+      Facebook-Api-Version:
+      - v6.0
       Strict-Transport-Security:
-      - max-age=631138519
-      X-Connection-Hash:
-      - 339726936e6a361d912506e92004f546
-      X-Response-Time:
-      - '118'
+      - max-age=15552000; preload
+      Pragma:
+      - no-cache
+      X-Fb-Rev:
+      - '1002084938'
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - private, no-cache, no-store, must-revalidate
+      X-Fb-Trace-Id:
+      - EB7bFBvOcAx
+      X-Fb-Request-Id:
+      - Axt5xTat-M_PSmC_qlLtBy8
+      Expires:
+      - Sat, 01 Jan 2000 00:00:00 GMT
+      X-Fb-Debug:
+      - 1X6CddGgPDovv4F3ou7inQih5FIA2o4aHz0OLom+wQA2Bd9eVjy4/U9D3LMvjEGE4qzAKDqV0puPrB0V0F/5sg==
+      Date:
+      - Tue, 05 May 2020 17:10:10 GMT
+      Alt-Svc:
+      - h3-27=":443"; ma=3600
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '208'
     body:
       encoding: UTF-8
-      string: '{"errors":[{"code":89,"message":"Invalid or expired token."}]}'
+      string: '{"data":{"height":200,"is_silhouette":false,"url":"https:\/\/platform-lookaside.fbsbx.com\/platform\/profilepic\/?asid=3397113376983906&height=200&width=200&ext=1591290610&hash=AeS8f2f9sCd2hOam","width":200}}'
     http_version: null
-  recorded_at: Sun, 03 May 2020 16:02:51 GMT
+  recorded_at: Tue, 05 May 2020 17:10:10 GMT
 recorded_with: VCR 5.1.0

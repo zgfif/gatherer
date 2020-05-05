@@ -19,9 +19,9 @@ http_interactions:
       message: OK
     headers:
       Etag:
-      - '"1490fa1112581b4f38e5cec9d032e1de81bedd63"'
+      - '"c8887e32b9351adf43bf10a1bc8256b7f0d9cad4"'
       X-App-Usage:
-      - '{"call_count":4,"total_cputime":0,"total_time":0}'
+      - '{"call_count":5,"total_cputime":0,"total_time":0}'
       Content-Type:
       - application/json; charset=UTF-8
       Facebook-Api-Version:
@@ -37,15 +37,15 @@ http_interactions:
       Cache-Control:
       - private, no-cache, no-store, must-revalidate
       X-Fb-Trace-Id:
-      - HkMLLSm4vO5
+      - Hn7+ypgUf9W
       X-Fb-Request-Id:
-      - Ajr-X_zr41_cwVctZPDwF9r
+      - ANytjw4I6kA_N9Dn-cWOAWl
       Expires:
       - Sat, 01 Jan 2000 00:00:00 GMT
       X-Fb-Debug:
-      - WsxXqJQLybwix0Dr/kn4QcI/oCazaYWEO+/gXNeTchK3CTfQNSY6lCf++YQsrT75R1pnHIDH0+ILjAGkQh3ipA==
+      - TLdo3mxsF271GbK0FBi4DvOQ/ARGUTlSIvVi1hTJs4pDZ0QuH8sw6hxhUqVCH+npgnZhS5PUCF4rNd/wExDrMw==
       Date:
-      - Tue, 05 May 2020 17:10:07 GMT
+      - Tue, 05 May 2020 17:14:35 GMT
       Alt-Svc:
       - h3-27=":443"; ma=3600
       Connection:
@@ -54,7 +54,7 @@ http_interactions:
       - '208'
     body:
       encoding: UTF-8
-      string: '{"data":{"height":200,"is_silhouette":false,"url":"https:\/\/platform-lookaside.fbsbx.com\/platform\/profilepic\/?asid=3397113376983906&height=200&width=200&ext=1591290607&hash=AeQliZgx8VUdsFLt","width":200}}'
+      string: '{"data":{"height":200,"is_silhouette":false,"url":"https:\/\/platform-lookaside.fbsbx.com\/platform\/profilepic\/?asid=3397113376983906&height=200&width=200&ext=1591290875&hash=AeTZZyxxgtjJ9W_t","width":200}}'
     http_version: null
-  recorded_at: Tue, 05 May 2020 17:10:07 GMT
+  recorded_at: Tue, 05 May 2020 17:14:35 GMT
 recorded_with: VCR 5.1.0

@@ -1,6 +1,7 @@
 require_relative '../config/environment'
 require 'rails/test_help'
 require 'mocha/minitest'
+require_relative '../app/models/avatar_adapter'
 
 module ActiveSupport
   class TestCase

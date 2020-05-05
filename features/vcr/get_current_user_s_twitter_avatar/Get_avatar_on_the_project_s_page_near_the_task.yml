@@ -2,67 +2,59 @@
 http_interactions:
 - request:
     method: get
-    uri: https://chromedriver.storage.googleapis.com/LATEST_RELEASE_81.0.4044
+    uri: https://graph.facebook.com/me/picture?access_token=EAAIjMGUG3oUBAH91suFIDzzi7BLCwmKZANfnIi0QQ9OIm9UMJSwK64ZCxJBPbgICWCNZCVCfreUhN67Sl6hxSj1nnjZAT14YvrW88eUKFrexMMSQG6V1LQ3hycPEcFvtB08uFCUj3kUOs7p24tIM9vAJn4dhB15UZAKW7S1hRLgZDZD&redirect=false&type=large
     body:
       encoding: US-ASCII
       string: ''
     headers:
+      User-Agent:
+      - Faraday v1.0.1
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
-      User-Agent:
-      - Ruby
-      Host:
-      - chromedriver.storage.googleapis.com
   response:
     status:
       code: 200
       message: OK
     headers:
-      X-Guploader-Uploadid:
-      - AAANsUmPmyO0QuG-anst4dQHDd05fqLUhC1UYAFwKqRwwxWtzLWqwX7zI8odt73ZqucajY8kEhpn04CSuUlA03behQ
-      Expires:
-      - Sun, 03 May 2020 10:54:07 GMT
-      Date:
-      - Sun, 03 May 2020 09:54:07 GMT
-      Last-Modified:
-      - Tue, 17 Mar 2020 16:16:55 GMT
       Etag:
-      - '"5b2d74232aaf7e3e284ba7f9d0ecf862"'
-      X-Goog-Generation:
-      - '1584461815944798'
-      X-Goog-Metageneration:
-      - '1'
-      X-Goog-Stored-Content-Encoding:
-      - identity
-      X-Goog-Stored-Content-Length:
-      - '12'
+      - '"2efed8a5a8926478fa2cc5d9134f6c0a753a94fb"'
+      X-App-Usage:
+      - '{"call_count":5,"total_cputime":0,"total_time":0}'
       Content-Type:
-      - text/plain
-      Content-Language:
-      - en
-      X-Goog-Hash:
-      - crc32c=bUrUmw==
-      - md5=Wy10Iyqvfj4oS6f50Oz4Yg==
-      X-Goog-Storage-Class:
-      - STANDARD
-      Accept-Ranges:
-      - bytes
-      Content-Length:
-      - '12'
-      Server:
-      - UploadServer
+      - application/json; charset=UTF-8
+      Facebook-Api-Version:
+      - v6.0
+      Strict-Transport-Security:
+      - max-age=15552000; preload
+      Pragma:
+      - no-cache
+      X-Fb-Rev:
+      - '1002085339'
+      Access-Control-Allow-Origin:
+      - "*"
       Cache-Control:
-      - public, max-age=3600
-      Age:
-      - '169'
+      - private, no-cache, no-store, must-revalidate
+      X-Fb-Trace-Id:
+      - BmchiBrYNvo
+      X-Fb-Request-Id:
+      - AHQQYDV80yK2tSOERTZQGy3
+      Expires:
+      - Sat, 01 Jan 2000 00:00:00 GMT
+      X-Fb-Debug:
+      - WmUpxElwV+R3V9CRUnT9/ny2zpCJCvmoxdQy3hptp0/dUGCs4Nq1BaRc1VYYWNiouHDFKI8PtHu2BZjIBW5zDw==
+      Date:
+      - Tue, 05 May 2020 17:33:16 GMT
       Alt-Svc:
-      - h3-Q050=":443"; ma=2592000,h3-Q049=":443"; ma=2592000,h3-Q048=":443"; ma=2592000,h3-Q046=":443";
-        ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443"; ma=2592000; v="46,43"
+      - h3-27=":443"; ma=3600
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '208'
     body:
       encoding: UTF-8
-      string: 81.0.4044.69
+      string: '{"data":{"height":200,"is_silhouette":false,"url":"https:\/\/platform-lookaside.fbsbx.com\/platform\/profilepic\/?asid=3397113376983906&height=200&width=200&ext=1591291996&hash=AeT-GX7k6geF8DVi","width":200}}'
     http_version: null
-  recorded_at: Sun, 03 May 2020 09:56:56 GMT
+  recorded_at: Tue, 05 May 2020 17:33:16 GMT
 recorded_with: VCR 5.1.0
