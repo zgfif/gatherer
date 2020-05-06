@@ -1,4 +1,4 @@
-require "rails_helper"
+require 'rails_helper'
 
 RSpec.describe "adding a new task" do
   let!(:project) { create(:project, name: "Project Bluebook") }
@@ -18,8 +18,7 @@ RSpec.describe "adding a new task" do
     Role.create(project: project, user: user)
   end
 
-  it "can re-order a task", :js do
-
+  it 'can re-order a task', :js do
     visit(project_path(project))
 
     within("#task_3") do
