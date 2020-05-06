@@ -5,11 +5,14 @@ class AvatarAdapter
     @user = user
   end
 
-  def graph
-    Koala::Facebook::API.new(Rails.application.credentials[:facebook][:app_access_token])
+  def client
+    @client ||= Twitter::REST::Client.new do |config|
+      config.consumer_key        = Rails.application.credentials[:twitter][:api_key]
+      config.consumer_secret     = Rails.application.credentials[:twitter][:api_secret_key]
+    end
   end
 
   def image_url
-    graph.get_picture_data(user.twitter_handle, type: 'large')['data']['url']
+    client.user(user.twitter_handle).profile_image_uri(:bigger).to_s
   end
 end

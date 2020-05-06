@@ -72,4 +72,4 @@ end
 gem 'webpacker'
 gem 'foreman'
 gem 'devise'
-gem 'koala'
+gem 'twitter'

@@ -1,5 +1,5 @@
 Given("a logged-in user") do
-  @user = FactoryBot.create(:user, twitter_handle: 'me')
+  @user = FactoryBot.create(:user, twitter_handle: '_pav_k')
   @project = FactoryBot.create(:project)
   FactoryBot.create(:role, user: @user, project: @project)
   @task = FactoryBot.create(:task, :newly_complete, project: @project, user: @user, project_order: 1, user: @user)
@@ -14,7 +14,7 @@ When("I view the project's page") do
 end
 
 Then("I should see the User's twitter avatar") do
-  url = "https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=3397113376983906&height=200&width=200&ext=1591291996&hash=AeT-GX7k6geF8DVi"
+  url = "http://pbs.twimg.com/profile_images/2728851550/1243f1cb77cc0b3f57f6c8956c4aaf68_bigger.png"
   within '#task_1' do
     expect(page).to have_selector(".completed", text: @user.email)
     expect(page).to have_selector("img[src='#{url}']")
