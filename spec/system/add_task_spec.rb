@@ -31,6 +31,7 @@ RSpec.describe "adding a new task" do
     visit(project_path(project))
 
     within("#task_2") do
+
       expect(page).to have_selector(".name", text: "Take Notes")
     end
   end
