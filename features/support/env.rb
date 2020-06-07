@@ -71,5 +71,5 @@ end
 include Warden::Test::Helpers
 
 After do
-   Warden.test_reset!
- end
+  Warden.test_reset!
+end

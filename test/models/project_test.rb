@@ -1,4 +1,5 @@
 require 'test_helper'
+# require_relative '../active_record_test_helper'
 
 class ProjectTest < ActiveSupport::TestCase
   setup do
@@ -20,6 +21,7 @@ class ProjectTest < ActiveSupport::TestCase
 
   test 'a project with no tasks is done' do
     assert(@project.done?)
+    # refute(@project.done?)
   end
 
   test 'a project with no tasks is estimated' do

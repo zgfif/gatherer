@@ -18,7 +18,7 @@ When("fills new project's form") do
 
   within '#new_project' do
     fill_in 'Name', with: 'Project Runaway'
-    fill_in 'Tasks', with: "who i am:2\nHisenberg:3"
+    fill_in 'Tasks', with: "who I am:2\nHisenberg:3"
     click_button 'Create Project'
   end
 end
@@ -26,7 +26,7 @@ end
 Then("appears created project with tasks") do
   visit project_path(1)
   within '#task_1' do
-    expect(page).to have_selector('.name', text: 'who i am')
+    expect(page).to have_selector('.name', text: 'who I am')
     expect(page).to have_selector('.size', text: '2')
   end
 

@@ -8,7 +8,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  def can_view?(project)
+  def can_view?(project) # visibility restriction
     project.in?(visible_projects)
   end
 

@@ -18,7 +18,7 @@ RSpec.describe "adding a new task" do
     Role.create(project: project, user: user)
   end
 
-  it 'can re-order a task', :js do
+  it 'can re-order a task', :js, :slow do
     visit(project_path(project))
 
     within("#task_3") do

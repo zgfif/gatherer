@@ -1,5 +1,5 @@
 class Task < ApplicationRecord
-  include Sizeable
+  include Sizeable #look at concerns/sizeable.rb
 
   belongs_to :project
   belongs_to :user, required: false

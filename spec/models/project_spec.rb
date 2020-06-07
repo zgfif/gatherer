@@ -1,5 +1,7 @@
 require 'rails_helper'
 
+# require_relative '../active_record_test_helper'
+
 RSpec.describe Project do
   let(:project) { Project.new }
   let(:task) { Task.new }

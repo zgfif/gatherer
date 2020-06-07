@@ -1,4 +1,9 @@
 require 'rails_helper'
+# require_relative '../../app/workflows/creates_project'
+# require 'devise'
+# require 'devise/orm/active_record'
+# require_relative '../active_record_spec_helper'
+
 
 RSpec.describe CreatesProject do
   let(:creator) { CreatesProject.new(name: 'Project X', task_string: task_string) }
@@ -8,6 +13,7 @@ RSpec.describe CreatesProject do
 
     it 'creates a project with a given name' do
       creator.build
+
       expect(creator.project.name).to eq('Project X')
     end
   end
@@ -93,10 +99,19 @@ describe "mocking a failure" do
 end
 
 describe 'project users' do
-  it 'adds users to a project' do
-    user = create(:user)
+  # it 'adds users to a project' do
+  #   user = create(:user)
+  #   creator = CreatesProject.new(name: 'Project Runway', users: [user])
+  #   creator.build
+  #   expect(creator.project.users).to eq([user])
+  # end
+
+  it 'another method of adding users to projest' do
+    project = Project.new
+    user = double
+    expect(project).to receive(:add_users).with([user])
+    allow(Project).to receive(:new).and_return(project)
     creator = CreatesProject.new(name: 'Project Runway', users: [user])
     creator.build
-    expect(creator.project.users).to eq([user])
   end
 end

@@ -1,15 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe Task do
-  it_should_behave_like "sizeable"
+  it_should_behave_like "sizeable" # additional specs from shared/size_group.rb 
   let!(:project) { build_stubbed(:project) }
   let!(:task) { build_stubbed(:task, project: project) }
 
-  it 'does not have any task as complete' do
-    expect(task).not_to be_complete
+  it 'does not have any task as complete', :completeness do
+    expect(task).to_not be_complete
   end
 
-  it 'allows us to complete task' do
+  it 'allows us to complete task', :completeness do
     task.mark_completed
     expect(task).to be_complete
   end

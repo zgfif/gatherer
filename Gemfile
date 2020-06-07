@@ -43,6 +43,12 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'cucumber-rails', require: false
   gem 'mocha', require: false
+  # pry gems
+  gem "pry-rails"
+  gem "pry-byebug"
+  gem "pry-stack_explorer"
+  gem "pry-rescue"
+  gem 'awesome_print'
 end
 
 group :development do
@@ -52,6 +58,13 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'spring-commands-rspec'
+
+  # Guard
+  gem 'guard'
+  gem 'guard-rspec'
+  gem 'guard-minitest'
+  gem 'guard-cucumber'
 end
 
 group :test do
@@ -65,6 +78,7 @@ group :test do
   gem "database_cleaner"
   gem 'vcr'
   gem 'webmock'
+  gem 'minitest-line'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -73,3 +87,4 @@ gem 'webpacker'
 gem 'foreman'
 gem 'devise'
 gem 'twitter'
+gem 'minitest-reporters'

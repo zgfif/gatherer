@@ -1,4 +1,4 @@
-class CreatesProject
+class CreatesProject # this class allows to create project and task via the same form
   attr_accessor :name, :project, :task_string, :users
 
   def initialize(name: '', task_string: '', users:[])
@@ -13,7 +13,8 @@ class CreatesProject
   end
 
   def build
-    self.project = Project.new(name: name, users: users)
+    self.project = Project.new(name: name)
+    project.add_users(users) unless users.empty?
   end
 
   def create

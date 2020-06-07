@@ -3,7 +3,7 @@ class Project < ApplicationRecord
   has_many :roles, dependent: :destroy
   has_many :users, through: :roles
 
-  validates :name, presence: true
+  validates :name, presence: true # each  project must has a name
 
   def self.all_public
     where(public: true)
@@ -42,12 +42,16 @@ class Project < ApplicationRecord
     (Time.zone.today + projected_days_remaining) <= due_date
   end
 
-  def self.velocity_length_in_days
+  def self.velocity_length_in_days # period for calculation of velocity
     21
   end
 
   def next_task_order
     return 1 if tasks.empty?
     (tasks.last.project_order || tasks.size) + 1
+  end
+
+  def add_users(users)
+    self.users << users
   end
 end
