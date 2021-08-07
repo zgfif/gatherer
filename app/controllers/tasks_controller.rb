@@ -19,7 +19,7 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     completed = params[:task][:completed] == 'true' && !@task.complete?
     params[:task][:completed_at] = Time.now if completed
-    if @task.update_attributes(task_params)
+    if @task.update(task_params)
       TaskMailer.task_completed_email(@task).deliver if completed
       redirect_to @task, notice: "project was successfully updated"
     else

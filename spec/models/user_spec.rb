@@ -32,7 +32,7 @@ RSpec.describe User, type: :model do
     end
 
     it 'allows an user to view public project' do
-      project.update_attributes(public: true)
+      project.update(public: true)
       expect(user.can_view?(project)).to be_truthy
     end
   end
